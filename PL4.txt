@@ -1,0 +1,519 @@
+
+Exercício 1
+
+a) Construa um algoritmo que calcule a soma dos algarismos pares de um número inteiro positivo
+introduzido pelo utilizador.
+
+b) Altere o algoritmo de modo a ser aplicado a uma sequência de números inteiros terminada por
+número não positivo.
+
+a)
+VAR: somaPares, num, alg, resto,
+
+ALG:
+INÍCIO
+	somaPares = 0;
+	REPETE
+		LER(num)
+	ENQUANTO(num <= 0);
+	REPETE
+		alg = num MOD 10;
+		resto = alg MOD 2;
+		SE(resto == 0)
+			somaPares = somaPares + alg;
+		FIMSE
+		num = num DIV 10;
+	ENQUANTO(num > 0)
+	ESCREVER("A soma dos algarismos pares é: " + somaPares);
+FIM
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+b)
+
+VAR: somaPares, num, alg, resto: INTEIRO
+
+ALG:
+INÍCIO
+	somaPares = 0;
+	LER(num);
+	ENQUANTO(num > 0)
+		REPETE
+			alg = num MOD 10;
+			resto = alg MOD 2;
+			SE(resto == 0)
+				somaPares = somaPares + alg;
+			FIMSE
+			num = num DIV 10;
+		ENQUANTO(num > 0);
+		ESCREVER("A soma dos algarismos pares é: " + somaPares);
+		LER(num);
+	FIMENQUANTO;
+FIM
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Exercício 2
+
+a) Construa um algoritmo que calcule o produto dos algarismos ímpares de um número inteiro
+positivo introduzido pelo utilizador.
+Exemplo: Entrada: 56983
+Saída: 135 (3*9*5)
+
+a)
+
+VAR: num, alg, produtoImpares : INTEIRO
+
+ALG:
+INÍCIO
+	produtoImpares = 1;
+	REPETE
+		LER(num);
+	ENQUANTO(num <= 0);
+	REPETE
+		alg = num MOD 10;
+		SE(alg MOD 2 != 0)
+			produtoImpares = produtoImpares * alg;
+		FIMSE
+		num = num DIV 10;
+	ENQUANTO(num != 0); 
+	ESCREVER("O produto dos algarismos impares é: " + produtoImpares);
+FIM
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+b) Altere o algoritmo de modo a ser aplicado a uma sequência de N números inteiros
+
+b)
+
+VAR: n, num, alg, produtoImpares, resto : INTEIRO
+
+ALG:
+INÍCIO
+	REPETE
+		LER(n);
+	ENQUANTO (n <= 0);
+	PARA (i = 1 ATE n PASSO 1)
+		produtoImpares = 1;
+		REPETE
+			LER(num);
+		ENQUANTO(num <= 0);
+		REPETE
+			alg = num MOD 10;
+			resto = alg MOD 2;
+			SE(resto != 0)
+				produtoImpares = produtoImpares * alg;
+			FIMSE
+			num = num DIV 10;
+		ENQUANTO(num != 0);
+		ESCREVER("O produto dos algarismos impares é: " + produtoImpares);
+	FIMPARA
+FIM
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Exercício 3
+
+a) O algoritmo inverte os algarismos do número introduzido e multiplica por 2.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+b) Altere o algoritmo de modo a que só aceite como entrada um número par e não múltiplo de 3.
+
+b)
+
+VAR: num, num1, dig
+
+INÍCIO
+	LER(num);
+	SE(num MOD 2 == 0 E num MOD 3 != 0)
+		num1 = 0;
+		ENQUANTO(num != 0)
+			dig = num MOD 10;
+			num1 = num1 * 10 + dig;
+			num = num DIV 10;
+		FIMENQUANTO;
+		ESCREVER("Resultado: " + 2*num1);
+	SENÃO
+		ESCREVER("O número não é par e não múltiplo de 3.");
+	FIMSE 
+FIM
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Exercício 4
+
+a) O algoritmo reescreve o número apenas com os algarismos pares.
+
+b)
+VAR: num, num1, dig, ord : INTEIRO
+
+ALG:
+INÍCIO
+	LER(num);
+	num1 = 0; 
+	ord = 0;
+	SE ((num >= 100) E (num < 10000))
+		ENQUANTO (num <> 0)
+			dig = num MOD 10;
+			SE (dig MOD 2 = 0)
+				num1 = num1 + dig * potencia(10,ord);
+				ord = ord+1;
+			FIMSE
+			num = num DIV 10;
+		FIMENQUANTO
+		ESCREVER("Resultado: " num1);
+	SENÃO
+		ESCREVER("O número introduzido tem de ter 3 ou mais algarismos e menos do 5.");
+	FIMSE
+FIM
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Exercício 5
+
+a) Elabore um algoritmo que recebe um número inteiro na base 8 e converte-o para o sistema
+decimal.
+b) Altere o algoritmo de modo a receber um número e a base (<10) em que está representado e
+converte-o para o sistema decimal.
+
+a)
+
+VAR: num, numDec, numOctal, ordem, alg : INTEIRO
+
+ALG: 
+INÍCIO
+	ordem = 0;
+	numDec = 0;
+	REPETE
+		LER(numOctal);
+	ENQUANTO(numOctal <= 0);
+	numOctal = num;
+	ENQUANTO (numOctal != 0)
+		alg = numOctal MOD 10;
+		numDec = numDec + alg * potencia(10,ordem);
+		ordem = ordem + 1;
+		numOctal = numOctal DIV 10;
+	FIMENQUANTO;
+	ESCREVER("O número ", num, "(8) é equivalente a ", numDec, "(10)."
+FIM
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+b)
+
+VAR: num, numBase, numFinal, ordem, alg, base : INTEIRO
+
+ALG:
+INÍCIO
+	ordem = 0;
+	numFinal = 0;
+	REPETE
+		LER(num, base);
+	ENQUANTO(num <= 0 OU base<=0 OU base >= 10;
+	numBase = num;
+	ENQUANTO(num > 0)
+		alg = num MOD 10;
+		numFinal = numFinal + alg * potencia(base,ordem);
+		ordem = ordem + 1;
+		num = numDec DIV base;
+	FIMENQUANTO
+	ESCREVER("O número ", numBase, "(10) é equivalente a ", numFinal, "(", base, ")."
+FIM
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Exercício 6
+
+a) Elabore um algoritmo que recebe um número inteiro decimal e converte-o para o sistema octal.
+b) Altere o algoritmo de modo a receber um número inteiro decimal e a base (<10) para o qual se
+pretende convertê-lo
+
+a)
+
+VAR: num, numDec, numOctal, ordem, alg : INTEIRO
+
+ALG:
+INÍCIO
+	ordem = 0;
+	numOctal = 0;
+	REPETE
+		LER(numDec);
+	ENQUANTO(numDec <= 0);
+	numDec = num;
+	ENQUANTO(numDec != 0)
+		alg = numDec MOD 8;
+		numOctal = numOctal + alg * potencia(10,ordem);
+		ordem = ordem + 1;
+		numDec = numDec DIV 8;
+	FIMENQUANTO;
+	ESCREVER("O número ", num, "(10) é equivalente a ", numOctal, "(8)."
+FIM
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+b)
+
+VAR: num, numDec, numFinal, ordem, alg, base : INTEIRO
+
+ALG:
+INÍCIO
+	ordem = 0;
+	numFinal = 0;
+	REPETE
+		LER(numDec);
+	ENQUANTO(numDec <= 0);
+	numDec = num;
+	REPETE
+		LER(base);
+	ENQUANTO((base <= 0) OU (base >= 10));
+	ENQUANTO(numDec != 0)
+		alg = numDec MOD base;
+		numFinal = numFinal + alg * potencia(10,ordem);
+		ordem = ordem + 1;
+		numDec = numDec DIV base;
+	FIMENQUANTO;
+	ESCREVER("O número ", num, "(10) é equivalente a ", numFinal, "(", base, ")."
+FIM
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Exercício 7
+
+Elabore um algoritmo que leia um número inteiro positivo com 2 ou mais algarismos e verifique se é
+ou não capicua.
+
+VAR:
+ALG:
+INÍCIO
+	REPETE
+		LER(num);
+	ENQUANTO(num <= 0);
+	num = numInicial
+	num1 = 0;
+	ENQUANTO(num != 0)
+		dig = num MOD 10;
+		num1 = num1 * 10 + dig;
+		num = num DIV 10;
+	FIMENQUANTO;
+	SE (num1 == numInicial)
+		ESCREVER("O número ", numInicial, " é uma capicua.");
+	SENÃO
+		ESCREVER("O número ", numInicial, " não é uma capicua.");
+	FIMSE;
+FIM
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		
+Exercício 8
+
+Elabore um algoritmo para ler uma sequência de números inteiros terminada pela introdução do
+número 0 (zero) e que determine o menor dígito ímpar do maior número introduzido.
+
+VAR: num, resto, alg, maiorNum, menorDig : INTEIRO;
+
+ALG:
+INÍCIO
+	maiorNum = 0;
+	menorDig = 10;
+	num = 1;
+	ENQUANTO (num != 0)
+		LER(num);
+		SE (num > maiorNum)
+			maiorNum = num;
+			REPETE
+				alg = num MOD 10;
+				resto = alg MOD 2;
+				SE((resto != 0) E (alg < menorDig))
+					menorDig = alg;
+				FIMSE
+				num = num DIV 10;
+			ENQUANTO(num > 0);
+		FIMSE
+	FIMENQUANTO
+	ESCREVER("O menor dígito ímpar do número ", maiorNum, " é ", menorDig);
+FIM
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Exercício 10
+
+Elabore um algoritmo que dado um número inteiro positivo verifica se é ou não um número primo.
+Um número é primo se for inteiro e se só for divisível, por ele próprio e por 1.
+
+VAR: num, resto : INTEIRO
+	primo : BOOLEAN
+
+ALG:
+INÍCIO
+	REPETE
+		LER(num);
+	ENQUANTO(num <= 0);
+	PARA(i = 2 ATE n-1 PASSO 1)
+		resto = num MOD i;
+		SE (resto == 0)
+			primo = FALSE;
+		FIMSE
+	FIMPARA
+	SE (primo = FALSE)
+		ESCREVER("O número ", num, "não é primo.");
+	SENÃO
+		ESCREVER("O número ", num, " é primo.");
+	FIMSE
+FIM
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Exercício 11
+
+Elabore um algoritmo que dados dois números inteiros positivos calcula o mínimo múltiplo comum.
+
+VAR: num1, num2, mult, minMultComum : INTEIRO
+
+ALG:
+INÍCIO
+	minMultComum = 0;
+	mult = 1;
+	REPETE
+		LER(num1, num2);
+	ENQUANTO(num1 <= 0 OU num2 <= 0);
+	ENQUANTO(minMultComum = 0)
+		resto1 = num1 MOD mult;
+		resto2 = num2 MOD mult;
+		SE(resto1 == 0 E resto2 == 0)
+			minMultComum = mult;
+		FIMSE
+		mult = mult + 1;
+	FIMENQUANTO;
+	ESCREVER("O mínimo múltiplo comum entre ", num1, " e ", num2, " é: ", minMultComum, ".");
+FIM
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Exercício 12
+
+Elabore um algoritmo que dados dois números inteiros positivos e calcula o máximo divisor comum.
+
+VAR: i, num1, num2, resto1, resto2, maxDivComum : INTEIRO
+
+ALG:
+INÍCIO
+	REPETE
+		LER(num1, num2);
+	ENQUANTO(num1 <= 0 OU num2 <= 0);
+	PARA (i = 1 ATE num1 PASSO 1)
+		resto1 = num1 MOD i;
+		resto2 = num2 MOD i;
+		SE (resto1 == 0 E resto2 == 0)
+			maxDivComum = i;
+		FIMSE;
+	FIMPARA;
+	ESCREVER("O máximo divisor comum entre ", num1, " e ", num2, " é: ", maxDivComum, ".");
+FIM
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Exercício 14
+
+Elabore um algoritmo que leia uma sequência de números positivos até encontrar um número cujo
+soma de todos os seus algarismos é par. Definir uma constante que guarde a quantidade máxima de
+números a ler.
+
+VAR: num, alg, numInicial, resto, cont, maxNum, soma : INTEIRO
+	somaPar : BOOLEAN
+
+ALG:
+INÍCIO
+	maxNum = 10;
+	ENQUANTO(somaPar == FALSE E cont < maxNum)
+		REPETE
+			LER(num);
+		ENQUANTO(num <= 0);
+		num = numInicial;
+		soma = 0;
+		cont = cont + 1;
+		ENQUANTO(num > 0)
+			alg = num MOD 10;
+			soma = soma + alg;
+			num = num DIV 10;
+		FIMENQUANTO;
+		resto == soma MOD 2;
+		SE(resto == 0)
+			somaPar = TRUE;
+		FIMSE;
+	FIMENQUANTO;
+	ESCREVER("A soma dos algarismos do número ", numInicial, " é par.");
+FIM
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Exercício 15
+
+Elabore um algoritmo que leia uma sequência de N números inteiros positivos, sendo N definido pelo
+utilizador e obrigatoriamente validado. O algoritmo deve apresentar, para cada um dos números lidos, a
+percentagem dos dígitos que são divisores do próprio número. Além disso, tem de mostrar a maior
+dessas percentagens. O algoritmo deve apresentar as mensagens que achar adequadas.
+
+VAR: i, n, num, resto, numInicial, algNum, divNum, percDiv, maiorPerc, alg : INTEIRO
+
+ALG:
+INÍCIO
+	REPETE
+		LER(n);
+	ENQUANTO(n <= 0);
+	PARA (i = 1 ATE n PASSO 1)
+		REPETE
+			LER(num);
+		ENQUANTO(num <= 0);
+		num = numInicial;
+		divNum = 0;
+		algNum = 0;
+		ENQUANTO(num > 0)
+			alg = num MOD 10;
+			num = num DIV 10;
+			resto = numInicial MOD alg;
+			SE(resto == 0)
+				divNum = divNum + 1;
+				algNum = algNum + 1;
+			FIMSE;
+		FIMENQUANTO;
+		percDiv = (divNum / algNum) * 100;
+		SE(percDiv > maiorPerc)
+			maiorPerc = percDiv;
+		FIMSE;
+	FIMPARA;
+FIM
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Exercício 16
+
+Elabore um algoritmo que determine e visualize os N primeiros números primos. Um número é primo
+se for inteiro e se só for divisível, por ele próprio e por 1.
+
+VAR: i, divNum, resto, n : INTEIRO
+
+ALG:
+INÍCIO
+	REPETE
+		LER(n);
+	ENQUANTO(n <= 0);
+	PARA (i = 1 ATE n PASSO 1)
+		PARA (divNum = 2 ATE i-1 PASSO 1)
+			resto = i MOD divNum;
+			SE(resto == 0)
+				nPrimo = FALSE;
+			SENÃO
+				nPrimo = TRUE;
+			FIMSE;
+		FIMPARA;
+		SE(nPrimo == TRUE)
+			ESCREVER("O número " + i + " é um número primo.");
+		FIMSE;
+	FIMPARA;
+FIM
+
+
+
+
+

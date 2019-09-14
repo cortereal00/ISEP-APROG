@@ -1,0 +1,272 @@
+﻿
+Exercício 1
+
+a) O algoritmo faz o fatorial de um número (num).
+
+ALG:
+INÍCIO
+	REPETE
+		LER(n);
+	ENQUANTO(n <= 0);
+	PARA(i = 1 ATE n PASSO 1)
+		res == 1;
+		LER(num);
+		PARA(x = num ATE 1 PASSO -1)
+			res = res * x
+		FIMPARA
+		ESCREVER("O resultado é ", res);
+	FIMPARA
+FIM
+
+R: O algoritmo é finito.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+b) Analise-o e deduza a sua funcionalidade. Reescreva o algoritmo anterior para que a sua
+funcionalidade seja executada para uma sequência de números inteiros. A sequência termina
+quando for introduzido um número não positivo. Tem garantias de que este algoritmo é finito?
+
+
+VAR: res, num, x INTEIRO
+
+ALG:
+INÍCIO
+	LER(num);
+	ENQUANTO(num > 0)
+		PARA(i = 0 ATE n PASSO 1)
+			res == 1;
+			LER(num);
+			PARA(x = num ATE 1 PASSO -1)
+				res = res * x
+			FIMPARA
+			ESCREVER('O resultado é ', res)
+		FIMPARA
+		LER(num)
+	FIMENQUANTO
+FIM
+
+R: O algoritmo é finito.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Exercício 2
+
+VAR:
+	contador, alunos, nPositivo, nNegativo : INTEIRO
+	nota, percPositivo, mediaNegativo  : REAl
+
+ALG:
+INICIO
+	LER(alunos);
+	contador == 0;
+	nPositivo == 0;
+	nNegativo == 0;
+	REPETIR
+		LER(nota);
+		SE (nota < 0 OU nota > 20)
+			ESCREVER("Nota inválida.");
+		SENÃO
+			contador == contador + 1;
+			SE (nota >= 9.5)
+				nPositivo == nPositivo + 1;
+			SENÃO
+				nNegativo == nNegativo + 1;
+	ATÉ(contador=alunos);
+	percPositivo == (nPositivo * 100) / alunos;
+	mediaNegativo == nNegativo / alunos;
+	ESCREVER("Percentagem de notas positivas: ", percPositivo);
+	ESCREVER("Média das notas negativas", mediaNegativo);
+FIM
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Exercício 3
+
+VAR:
+	numero, pares, impares, mediaPares, mediaImpares: REAL
+
+ALG:
+INÍCIO
+	LER(numero);
+	SE(numero MOD 2 == 0)
+		pares++;
+	SENÃO
+		impares++;
+	FIMSE
+	ENQUANTO(numero > 0)
+		LER(numero);
+		SE(numero MOD 2 == 0)
+			pares++;
+		SENÃO
+			impares++
+		FIMSE
+	FIMENQUANTO 
+	mediaPares = pares / (pares + impares);
+	mediaImpares = impares / (pares + impares);
+	ESCREVER('Média dos números pares: ' + mediaPares);
+	ESCREVER('Média dos números impares: ' + mediaImpares);
+FIM
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Exercício 4
+
+VAR:
+	n, index, limMin, limMax, resto : INTEIRO
+
+ALG:
+INICIO
+	LER(n);
+	LER(limMin);
+	LER(limMax);
+	PARA (index = limMin; limMax, 1 ) fazer
+		resto == index MOD n;
+		SE (resto == 0)
+			ESCREVER(index);
+		FIMSE
+	FIMPARA
+FIM
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Exercício 5
+
+VAR:
+	minimo, maximo :  INTEIRO
+	numers : STRING
+
+INÍCIO
+	LER(minimo, maximo);
+	ENQUANTO(minimo >= maximo)
+		ESCREVER('Intervalo definido incorretamente.');
+		LER(minimo, maximo);
+	FIMENQUANTO
+	numeros = ''
+	PARA(i = minimo + 1; i <= maximo; i++)
+		SE(i MOD 5 == 0 && i MOD 2 == 0)
+			numeros = numeros + i;
+		FIMSE
+	FIMPARA
+FIM
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Desenvolva um algoritmo que leia números positivos até que a soma acumulada destes seja superior a
+um dado número introduzido pelo utilizador. Antes de terminar, o algoritmo deve mostrar o menor de
+todos esses números.
+
+Exercício 6
+
+VAR:
+	n, nMenor, soma, limMax INTEIRO
+
+ALG:
+INICIO
+	soma == 0;
+	nMenor == 9999;
+	ENQUANTO (soma < limMax)
+		LER(n);
+		SE (n < 0)
+			ESCREVER("Número inválido.");
+		SENÃO
+			soma == soma + n;
+			SE(n < nMenor)
+				nMenor == n;
+			FIMSE
+		FIMSE
+	FIMENQUANTO
+	ESCREVER("Total da soma: ", soma);
+	ESCREVER("Número mínimo introduzido: ", nMenor);
+FIM
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Desenvolva um algoritmo que leia números positivos até que o produto acumulado destes seja superior
+a um dado número introduzido pelo utilizador. Antes de terminar, o algoritmo deve mostrar o maior de
+todos esses números.
+
+Exercício 8
+
+VAR:
+	n, nMaior, total, limMax INTEIRO
+
+ALG:
+INICIO
+	total == 0;
+	nMaior == 0;
+	ENQUANTO (total < limMax)
+		LER(n);
+		SE (n < 0)
+			ESCREVER("Número inválido.");
+		SENÃO
+			total == total * n;
+			SE(n > nMaior)
+				nMaior == n;
+			FIMSE
+		FIMSE
+	FIMENQUANTO
+	ESCREVER("Total da multiplicação: ", total);
+	ESCREVER("Número máximo introduzido: ", nMaior);
+FIM
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Elabore um algoritmo que, dado um número N de 1 a 20, apresente todas as maneiras possíveis de
+obter esse número N, somando dois números de 0 a 10, independentemente da ordem desses dois
+números. No final deve indicar quantas maneiras diferentes foram encontradas.
+Exemplo: Para o número 5 deverá identificar 3 maneiras diferentes: 0+5, 1+4 e 2+3
+
+Exercício 10
+
+
+VAR: n, num1, num2
+
+ALG:
+INÍCIO
+	REPETE
+		LER(n);
+	ENQUANTO(n < 1 OU n > 20);
+	PARA(i = 0 ATE n / 2 PASSO 1)
+		num1 == i;
+		num2 == n - i;
+		ESCREVER(num1 + ' + ' + num2);
+	FIMPARA
+FIM
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

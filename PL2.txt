@@ -1,0 +1,252 @@
+Exercício 4
+
+VAR:
+	num, alg1, alg2, alg3 : INTEIRO
+	erro  : STRING
+
+ALG:
+INICIO
+	erro == "Erro. Introduza algarismos por ordem crescente de modo a formar um número entre 100 e 999.";
+	LER(alg1);
+	SE (alg1 < 1 OU alg1 > 9)
+		ESCREVER(erro);
+	SENÃO
+		LER(alg2);
+		SE (alg2 < 1 OU alg2 > 9 OU alg2 < alg1)
+			ESCREVER(erro);
+		SENÃO
+			LER(alg3);
+			SE (alg3 < 1 OU alg3 > 9 OU alg3 < alg2)
+				ESCREVER(erro);
+			SENÃO
+				num == ((alg1*100) + (alg2*10) + alg3);
+				ESCREVER("A raiz quadrada de ", num, " é ", sqrt(num), ".");
+			FIMSE
+		FIMSE
+	FIMSE
+FIM
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Exercício 6
+
+VAR:
+	preco, saldo : REAL
+
+ALG:
+INICIO
+	LER(preco);
+	SE (preco <= 0)
+		ESCREVER("O preço tem que ser superior a 0.";
+	SENÃO
+		SE (preco <= 50)
+			saldo == (preco * 0.80);
+		SENÃO
+			SE (preco <= 100)
+				saldo == (preco * 0.70);
+			SENÃO
+				SE (preco <= 200)
+					saldo == (preco * 0.60);
+				SENÃO
+					saldo == (preco *  0.40);
+				FIMSE
+			FIMSE
+		FIMSE
+		ESCREVER("O preço com desconto é ", preco, ".");
+	FIMSE
+FIM
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Exercício 8
+
+VAR:
+	ang1, ang2, ang3 : REAL
+
+ALG:
+INICIO
+	LER(ang1);
+	LER(ang2);
+	LER(ang3);
+	SE (ang1 > 0 E ang2 > 0 E ang3 >0)
+		SE ((ang1 + ang2 + ang3) != 0)
+			ESCREVER("A some dos triangulos tem de dar 180º");
+		SENÃO
+			SE (ang1 < 90 E ang2 < 90 E ang3 < 90)
+				ESCREVER("O triangulo é acutângulo.");
+			SENÃO
+				SE (ang1 = 90 OU ang2 = 90 OU ang3 = 90)
+					ESCREVER("O triangulo é retângulo.");
+				SENÃO
+					ESCREVER("O triangulo é obtuso.");
+				FIMSE
+			FIMSE
+		FIMSE
+	SENÃO
+		ESCREVER("Os ângulos tem que ter um valor superior a 0.");
+	FIMSE
+FIM
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Exercício 10
+
+VAR:
+	hora, min, sec, tempo, horaTransporte, minTransporte, secTransporte : REAL
+
+ALG:
+INICIO
+	LER(hora);
+	LER(min);
+	LER(sec);
+	LER(tempo);
+	secTransporte == sec + tempo;
+	sec == secTransporte MOD 60;
+	minTransporte == secTransporte DIV 60;
+	minTransporte == minTransporte + min;
+	min  == minTransporte MOD 60;
+	horaTransporte == minTransporte DIV 60;
+	hora == horaTransporte + hora;
+	ESCREVER("Tempo do fim do procedimento: ", hora, " horas, ", min, " minutos, ", sec, " segundos." );
+FIM
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Exercício 12
+
+VAR:
+	x1, x2, y1, y2, dist, x, y : REAL
+
+ALG:
+INICIO
+	LER(x1);
+	LER(y1);
+	LER(x2);
+	LER(y2);
+	x == ((x2 - x1) * (x2 + x1));
+	y == ((y2 - y1) * (y2 + y1));
+	dist == sqrt(x+y);
+	ESCREVER("Os pontos encontram-se a ", dist, " unidades de distância.")
+FIM	
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Exercício 14
+
+VAR:
+	area, custoLitro, rendTinta, salarioPintor, nPintores, custoTinta, rendPintor, litrosTinta, horasPintor, dias, diasTransporte, custoPintor, custoTotal  : REAL
+
+ALG:
+INICIO
+	rendPintor == 2;
+	LER(area);
+	LER(custoLitro);
+	LER(rendTinta);
+	LER(salarioPintor);
+	SE (area < 0) then
+		ESCREVER("ERRO")
+		SENÃO
+		SE (area < 100) then
+			nPintores == 1
+			SENÃO
+			SE (area < 300) then
+				nPintores == 2
+				rendPintor == rendPintor*2;
+				SENÃO
+				SE (area < 1000) then
+					nPintores == 3
+					rendPintor == rendPintor*3;
+					SENÃO
+						nPintores == 4
+						rendPintor == rendPintor*4;
+				FIMSE
+			FIMSE
+		FIMSE
+	FIMSE
+	litrosTinta == area/rendTinta
+	custoTinta == custoLitro*litrosTinta
+	horasPintor == area/rendPintor
+	dias == horasPintor MOD 8;
+	diasTransporte == horasPintor DIV 8;
+	SE (diasTransporte != 0)
+		dias == dias + 1;
+	custoPintor == salarioPintor*nPintores*dias;
+	custoTotal == custoPintor + custoTinta;
+	ESCREVER("Custo de mão de obra: ");
+	ESCREVER("Custo da tinta: ", custoTinta);
+	ESCREVER("Custo Total: ", custoTotal);
+FIM
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Exercício 16
+
+a)
+VAR:
+	d1, d2, d3, num : INTEIRO
+	
+ALG
+INICIO										INICIO
+	LER(3,2,1)								LER(d1,d2,d3)
+	num == 3									num == 0
+	num == 3*10 + 2								num == 0*10 + 1
+	num == 32*10 + 1							num == 1*10 + 2
+	ESCREVER(321)								ESCREVER(12)
+FIM
+
+b) Tem como função ESCREVER um número de 3 dígitos através da introdução de 3 algarismos.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Exercício 18
+
+VAR:
+	iPoluicao : REAL
+	
+ALG
+INICIO
+	LER(iPoluicao);
+	SE (iPoluicao < 0)
+		ESCREVER("Valor impossível.");
+	SENÃO
+		SE (iPoluicao < 0.3)
+			ESCREVER("Índice de poluição aceitável.");
+		SENÃO
+			SE (iPoluicao < 0.4)
+				ESCREVER("As indústrias do 1º grupo terão que suspender as suas atividades");
+			SENÃO
+				SE (iPoluicao < 0.5)
+					ESCREVER("As indústrias do 1º e 2º grupo terão que suspender as suas atividades");
+				SENÃO
+					ESCREVER("As indústrias do 1º, 2º e 3º grupo terão que suspender as suas atividades");
+				FIMSE
+			FIMSE
+		FIMSE
+	FIMSE
+FIM
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Exercício 20
+
+VAR:
+	d1, d2, d3, d4, d5, total, media, mediaKm  :  REAL
+
+ALG
+INICIO
+	LER(d1, d2, d3, d4, d5);
+	total == d1 + d2 + d3 + d4 + d5;
+	media == (total / 5);
+	mediaKm == ((media * 1.609) / total;
+	ESCREVER("Distância média diária: ", mediaKm,  " Km");
+FIM
+
+-------------------------------------------------------------------------------------------------------------
